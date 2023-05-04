@@ -14,6 +14,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+DotNetEnv.Env.Load("../.env");
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

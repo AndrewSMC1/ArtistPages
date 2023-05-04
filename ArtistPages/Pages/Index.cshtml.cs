@@ -14,7 +14,7 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        DotNetEnv.Env.Load("../.env");
+        //DotNetEnv.Env.Load("../.env");
 
         string MAPKEY = Environment.GetEnvironmentVariable("MAPKEY");
         if (MAPKEY == null)
