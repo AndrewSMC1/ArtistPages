@@ -14,10 +14,9 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        //DotNetEnv.Env.Load("../.env");
-
-        string MAPKEY = Environment.GetEnvironmentVariable("MAPKEY");
-        if (MAPKEY == null)
+        string MAPKEY = "";
+        MAPKEY += Environment.GetEnvironmentVariable("MAPKEY");
+        if (MAPKEY == "")
         {
             throw new Exception("MAPKEY environment variable is not set.");
         }
