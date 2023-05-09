@@ -11,8 +11,13 @@ html {
 html {
   position: relative;
   min-height: 100%;
+  background-color: darkslategrey;
 }
 
 body {
   margin-bottom: 60px;
+}
+
+footer {
+  background-color: azure;
 }
