@@ -38,7 +38,6 @@ footer {
   font-size: 5rem;
   font-weight: 1000;
   align-content: flex-start;
-
   background-image: url("https://images.pexels.com/photos/6985132/pexels-photo-6985132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-repeat: no-repeat;
   background-size: cover;
@@ -53,7 +52,7 @@ footer {
 .llightbackground {
   display: inline-block;
   padding: 10px;
-  background-color: rgba(70, 69, 69, 0);
+  background-color: rgba(77, 75, 75, 0.1);
   border-radius: 20%;
   backdrop-filter: blur(50px) brightness(80%);
 }

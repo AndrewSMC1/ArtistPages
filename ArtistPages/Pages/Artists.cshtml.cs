@@ -20,7 +20,7 @@ namespace ArtistPages.Pages
         public async Task Pull_ArtistInfo()
         {
             ArtistsInfo = await _artistsInfo.GetArtistInfo();
-            
+
         }
 
 
@@ -69,8 +69,8 @@ namespace ArtistPages.Pages
 
         public string Get_Artist_ID(int index)
         {
-           string artistid = ArtistsInfo.artists[index].id;
-           return artistid;
+            string artistid = ArtistsInfo.artists[index].id;
+            return artistid;
         }
         public Image Get_Artist_Image(int index)
         {
@@ -93,7 +93,7 @@ namespace ArtistPages.Pages
 
         public void OnGet()
         {
-            
+
             Console.WriteLine("Artist Page Refreshed");
 
         }
