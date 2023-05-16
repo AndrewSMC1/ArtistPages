@@ -13,20 +13,42 @@
 
 <div class="text-center">
     <p>
-        @for (int i = 0; i < Model.Get_Artist_Count(); i++)
-        {
+        @{
+            for (int i = 0; i < Model.Get_Artist_Count(); i++)
 
-        <div class="tile">
-            <a href=@Model.Get_Artist_URL(i) target="_blank">
-                <img src=@Model.Get_Artist_Image(i).url alt="@Model.Get_Artist_Name(i) Profile Image">
-                <div class="info display-5">
-                    <p class="name">@Model.Get_Artist_Name(i)</p>
-                    <span class="follower-count">Followers: @Model.Get_Artist_Followers(i)</span>
-                    <div class="additional-info">@await Model.Get_Album_Name(Model.Get_Artist_ID(i))</div>
-                </div>
-            </a>
-        </div>
+            {
+                string artistid = Model.Get_Artist_ID(i);
+            <div class="tile">
+                <a href=@Model.Get_Artist_URL(i) target="_blank">
+                    <img class="artist-image" src=@Model.Get_Artist_Image(i).url alt="@Model.Get_Artist_Name(i) Profile Image">
+                    <div class="info display-5">
+                        <p class="name">@Model.Get_Artist_Name(i)</p>
+                        <p class="follower-count">Followers: @Model.Get_Artist_Followers(i)</p>
 
+                    </div>
+                </a>
+                <a href=@await Model.Get_Album_URL(artistid) target="_blank">
+                    <div class="additional-info info display-5">
+                        <p><span class="latestrelease">Latest Release<span />
+                                <span>@await Model.Get_Album_Date(artistid)</span>
+                        </p>
+                        <p class="album">
+                            <span><img class="album-image" src=@await Model.Get_Album_Img(artistid)
+                                    alt="@Model.Get_Artist_Name(i) Profile Image"></span>
+                            <span class="albumname">@await Model.Get_Album_Name(artistid)</span>
+
+                        </p>
+
+                        <p></p>
+
+                    </div>
+                </a>
+
+
+
+            </div>
+
+            }
         }
     </p>
 </div>

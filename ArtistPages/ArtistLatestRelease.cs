@@ -47,13 +47,13 @@ namespace ArtistPages
         {
             if (!artistTrackCache.ContainsKey(artistId) || DateTime.UtcNow >= refreshTime)
             {
-                await Console.Out.WriteLineAsync("No Artist Data Found Calling Spotify API");
+                await Console.Out.WriteLineAsync("Album Data Expired Refreshing");
                 artistTrackCache[artistId] = await GenerateArtistInfo(artistId);
                 refreshTime = DateTime.UtcNow.AddSeconds(9000);
                 await Console.Out.WriteLineAsync("Received Data at: " + DateTime.UtcNow);
                 await Console.Out.WriteLineAsync("Next Refresh at: " + refreshTime + "\n");
             }
-            Console.WriteLine("Getting artist track");
+            
             return artistTrackCache[artistId];
         }
     }

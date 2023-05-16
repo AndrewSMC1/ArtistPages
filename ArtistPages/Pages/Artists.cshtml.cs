@@ -91,6 +91,34 @@ namespace ArtistPages.Pages
             return string.Empty; // or throw an exception if no album found
         }
 
+        public async Task<string> Get_Album_Img(string artistId)
+        {
+            ArtistTrack artistTrack = await _artistLatestRelease.GetArtistInfo(artistId);
+
+            string albumImg = artistTrack.items[0].images[0].url;
+            return albumImg;
+        }
+
+        public async Task<string> Get_Album_Date(string artistId)
+        {
+            ArtistTrack artistTrack = await _artistLatestRelease.GetArtistInfo(artistId);
+
+            string albumDate = artistTrack.items[0].release_date;
+            return albumDate;
+        }
+
+        public async Task<string> Get_Album_URL(string artistId)
+        {
+            ArtistTrack artistTrack = await _artistLatestRelease.GetArtistInfo(artistId);
+
+            string albumUrl = artistTrack.items[0].external_urls.spotify;
+            //string albumUrl = $"https://open.spotify.com/track/{albumUri}";
+            return albumUrl;
+        }
+
+
+
+
         public void OnGet()
         {
 

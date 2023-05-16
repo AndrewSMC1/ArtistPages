@@ -11,6 +11,9 @@
             artists.Add("0k17h0D3J5VfsdmQ1iZtE9");
             artists.Add("0Z8XVUAOBPM4x12wKnFHEQ");
             artists.Add("4RZjexLlwgAPorkk7AUKT7");
+            artists.Add("6olE6TJLqED3rqDCT0FyPh");
+            artists.Add("5qRtt9DQNy64ig66kCWFjX");
+
 
         }
         // puts all artists in a string separated by commas

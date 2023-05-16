@@ -66,7 +66,7 @@ namespace ArtistPages
 
             if (artistCacheData == null || DateTime.UtcNow >= refreshTime) // Check if the data is already retrieved
             {
-                await Console.Out.WriteLineAsync("No Artist Data Found Calling Spotify API");
+                await Console.Out.WriteLineAsync("Artist Data Expired Refreshing");
                 //artistCacheData = null;
                 artistCacheData = await GenerateArtistInfo();
                 // Calls API to refresh Artist Data every 15 mins reduces API calls
