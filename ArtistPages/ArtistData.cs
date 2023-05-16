@@ -1,4 +1,5 @@
-﻿namespace ArtistPages
+﻿//class that holds the information returned by the artist information API request
+namespace ArtistPages
 {
     public class ArtistsData
     {

@@ -4,8 +4,7 @@
     ViewData["Title"] = "Artists page";
 
 
-    // Retrieve the artist names and store them in a list
-
+    // Checks if ArtistInfo is changed when paged is loaded
     await Model.Pull_ArtistInfo();
 
 
@@ -15,7 +14,7 @@
     <p>
         @{
             for (int i = 0; i < Model.Get_Artist_Count(); i++)
-
+            //creates a new div that is placed in a flexbox that changes with the information of the artist at the index i
             {
                 string artistid = Model.Get_Artist_ID(i);
             <div class="tile">

@@ -35,28 +35,24 @@ var tokenManager = app.Services.GetRequiredService<TokenManager>();
 await tokenManager.get_token();
 
 
-
 // creates the var that holds the Cached instance of artist information
 var artistsInfo = app.Services.GetRequiredService<ArtistsInfo>();
-
 // Fetches the json string for all artists at server startup 
 await artistsInfo.GetArtistInfo();
 
-// creates the var that holds the Cached instance of artist information
-var artistList = app.Services.GetRequiredService<ArtistList>();
 
-// Fetches the json string for all artists at server startup 
+// makes the artistList cache stored as part of the program.cs
+var artistList = app.Services.GetRequiredService<ArtistList>();
+// Creates the list of artists from the artist list class
 var artists = artistList.GetArtistList();
 
-// creates the var that holds the Cached instance of artist information
+
+// holds the Cached instance of artist Albums
 var artistTracks = app.Services.GetRequiredService<ArtistLatestRelease>();
-
-
 // Fetches the json string for all artists at server startup 
-
-foreach (var artist in artists)
+foreach (var artist in artists)//goes through each artist and caches all the latest album information at startup
 {
-    Console.WriteLine("stratup tracks fethc");
+    Console.WriteLine("Startup Albums Requested");
     await artistTracks.GetArtistInfo(artist);
 }
 

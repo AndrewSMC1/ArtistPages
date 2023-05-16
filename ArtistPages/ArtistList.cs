@@ -1,12 +1,14 @@
-﻿namespace ArtistPages
+﻿// generates a list of artists to get information from 
+// can be made into a db or json file 
+namespace ArtistPages
 {
     public class ArtistList
     {
-        public List<string> artists = new List<string>();
+        private List<string> artists = new List<string>();
         // creates the list of artists can be done in db or json for better organization
         private void GenerateArtistList()
         {
-            artists.Clear();
+            artists.Clear(); //clears list to be remade at request
             Console.WriteLine("Regenerating Artists List");
             artists.Add("0k17h0D3J5VfsdmQ1iZtE9");
             artists.Add("0Z8XVUAOBPM4x12wKnFHEQ");
@@ -39,11 +41,11 @@
             artists.Add("4nUBBtLtzqZGpdiynTJbYJ");
             //Frank Ocean
             artists.Add("2h93pZq0e7k5yf4dywlkpM");
-            
-       
+
+
 
         }
-        // puts all artists in a string separated by commas
+        // puts all artists in a string separated by commas to send to bundled artist API request
         public string LinkArtists()
         {
             GenerateArtistList();
@@ -52,6 +54,7 @@
             return combinedArtists;
         }
 
+        //returns the list of artists
         public List<string> GetArtistList()
         {
             GenerateArtistList();

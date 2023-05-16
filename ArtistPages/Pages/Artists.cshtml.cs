@@ -7,10 +7,9 @@ namespace ArtistPages.Pages
     {
         private ArtistsData ArtistsInfo;
         private readonly ArtistsInfo _artistsInfo;
-
         private readonly ArtistLatestRelease _artistLatestRelease;
 
-
+        //pulls in the classes that provide the latest artist and album information
         public ArtistsModel(ArtistsInfo artistsInfo, ArtistLatestRelease artistLatestRelease)
         {
             _artistsInfo = artistsInfo;
@@ -19,40 +18,27 @@ namespace ArtistPages.Pages
 
         public async Task Pull_ArtistInfo()
         {
+            //when the webpage is accessed it ensures that artist information is already received from API before displaying content
             ArtistsInfo = await _artistsInfo.GetArtistInfo();
 
         }
 
 
-
-        private List<string> BuildArtistNames(ArtistsData artistsData)
-        {
-            List<string> artistNames = new List<string>();
-
-            foreach (var artist in artistsData.artists)
-            {
-                artistNames.Add(artist.name);
-            }
-            return artistNames;
-        }
-        public List<string> GetArtistNames()
-        {
-            return BuildArtistNames(ArtistsInfo);
-        }
-
+        // Method that will return artists name at an index
         public string Get_Artist_Name(int index)
         {
             string name = ArtistsInfo.artists[index].name;
             return name;
         }
 
+        // gives the total number of artists who are loaded for the display loop
         public int Get_Artist_Count()
         {
-
             int artist_count = ArtistsInfo.artists.Length;
             return artist_count;
         }
 
+        //gives the amount of followers 
         public string Get_Artist_Followers(int index)
         {
             int follower_count = ArtistsInfo.artists[index].followers.total;
@@ -60,6 +46,7 @@ namespace ArtistPages.Pages
             return follower_amount;
         }
 
+        //gives the profile url of an artist
         public string Get_Artist_URL(int index)
         {
             string artistid = ArtistsInfo.artists[index].id;
@@ -67,28 +54,27 @@ namespace ArtistPages.Pages
             return artistURL;
         }
 
+        //gives the id of an artist
         public string Get_Artist_ID(int index)
         {
             string artistid = ArtistsInfo.artists[index].id;
             return artistid;
         }
+
+        //gives the profile image url of an artist
         public Image Get_Artist_Image(int index)
         {
             Image image = ArtistsInfo.artists[index].images[0];
             return image;
         }
 
-
+        //album info is only rerequestable 1 artist at a time each tile needs a new call for album information
         public async Task<string> Get_Album_Name(string artistId)
         {
             ArtistTrack artistTrack = await _artistLatestRelease.GetArtistInfo(artistId);
-            if (artistTrack != null && artistTrack.items.Length > 0)
-            {
-                string albumName = artistTrack.items[0].name;
-                return albumName;
-            }
+            string albumName = artistTrack.items[0].name;
+            return albumName;
 
-            return string.Empty; // or throw an exception if no album found
         }
 
         public async Task<string> Get_Album_Img(string artistId)
@@ -112,12 +98,8 @@ namespace ArtistPages.Pages
             ArtistTrack artistTrack = await _artistLatestRelease.GetArtistInfo(artistId);
 
             string albumUrl = artistTrack.items[0].external_urls.spotify;
-            //string albumUrl = $"https://open.spotify.com/track/{albumUri}";
             return albumUrl;
         }
-
-
-
 
         public void OnGet()
         {
