@@ -1,12 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System;
-using System.ComponentModel;
-using System.Net;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.Json;
-using static System.Net.WebRequestMethods;
 
 namespace ArtistPages.Pages
 {
@@ -25,12 +17,11 @@ namespace ArtistPages.Pages
         public async Task Pull_ArtistInfo()
         {
             ArtistsInfo = await _artistsInfo.GetArtistInfo();
-            
         }
         private List<string> BuildArtistNames(ArtistsData artistsData)
         {
             List<string> artistNames = new List<string>();
-           
+
             foreach (var artist in artistsData.artists)
             {
                 artistNames.Add(artist.name);
@@ -48,7 +39,8 @@ namespace ArtistPages.Pages
             return name;
         }
 
-        public int Get_Artist_Count() {
+        public int Get_Artist_Count()
+        {
 
             int artist_count = ArtistsInfo.artists.Length;
             return artist_count;
@@ -57,8 +49,8 @@ namespace ArtistPages.Pages
         public string Get_Artist_Followers(int index)
         {
             int follower_count = ArtistsInfo.artists[index].followers.total;
-            string follower_ammount = Convert.ToString(follower_count);
-            return follower_ammount;
+            string follower_amount = Convert.ToString(follower_count);
+            return follower_amount;
         }
 
         public string Get_Artist_Popularity(int index)
@@ -74,21 +66,10 @@ namespace ArtistPages.Pages
             return image;
         }
 
-        public async void OnGet()
+        public void OnGet()
         {
-            
+
             Console.WriteLine("Artist Page Refreshed");
-            //await Pull_ArtistInfo();
-
-            //Console.WriteLine(Get_Artist_Count());
-
-            //Console.WriteLine(Get_Artist_Name(2));
-            //Console.WriteLine(Get_Artist_Followers(2));
-            //Console.WriteLine(Get_Artist_Popularity(2));
-            //Console.WriteLine(Get_Artist_Image(2).url);
-            //Console.WriteLine(Get_Artist_Image(2).width);
-            //Console.WriteLine(Get_Artist_Image(2).height);
-            
 
         }
     }

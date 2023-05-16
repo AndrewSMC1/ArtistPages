@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using System;
-using System.ComponentModel;
-using System.Net;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 
 namespace ArtistPages
@@ -29,7 +23,7 @@ namespace ArtistPages
 
             string spotify_Auth_String = Convert.ToBase64String(auth_bytes); // auth string for token
 
-            
+
 
             static async Task<string> GetSpotifyToken(string spotify_Auth_String)
             {
@@ -38,7 +32,7 @@ namespace ArtistPages
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", spotify_Auth_String);
 
-                var form = new Dictionary<string, string> 
+                var form = new Dictionary<string, string>
                 {
                     {"grant_type", "client_credentials"}
                 };
@@ -63,18 +57,18 @@ namespace ArtistPages
             JsonDocument json_parsed = JsonDocument.Parse(tokenjson);
             spotify_token = json_parsed.RootElement.GetProperty("access_token").GetString();
 
-            
+
             Console.WriteLine("New Token: **********\n");
 
             spotify_token_time = json_parsed.RootElement.GetProperty("expires_in").GetInt32();
 
-            expirationTime = DateTime.UtcNow.AddSeconds(spotify_token_time-600);
-            
-            
-            Console.WriteLine("Token Generated at: "+ DateTime.UtcNow);
-            Console.WriteLine("Token Expires at: "+ expirationTime + "\n");
-            
-            
+            expirationTime = DateTime.UtcNow.AddSeconds(spotify_token_time - 600);
+
+
+            Console.WriteLine("Token Generated at: " + DateTime.UtcNow);
+            Console.WriteLine("Token Expires at: " + expirationTime + "\n");
+
+
             if (spotify_token == null)
             {
                 throw new Exception("Call to Spotify token failed");
@@ -90,11 +84,11 @@ namespace ArtistPages
             {
                 Console.WriteLine("Generating new token");
                 await generate_new_token();
-                
+
             }
 
             return current_token;
-            
+
         }
 
     }
