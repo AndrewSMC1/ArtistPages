@@ -149,6 +149,9 @@ footer {
   font-size: medium;
 }
 
+.text-center {
+  margin-bottom: 200px;
+}
 .button-container {
   display: flex;
   justify-content: center;
