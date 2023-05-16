@@ -70,7 +70,7 @@ namespace ArtistPages
                 //artistCacheData = null;
                 artistCacheData = await GenerateArtistInfo();
                 // Calls API to refresh Artist Data every 15 mins reduces API calls
-                refreshTime = DateTime.UtcNow.AddSeconds(9000);
+                refreshTime = DateTime.UtcNow.AddSeconds(900);
                 await Console.Out.WriteLineAsync("Received Data at: " + DateTime.UtcNow);
                 await Console.Out.WriteLineAsync("Next Refresh at: " + refreshTime + "\n");
                 

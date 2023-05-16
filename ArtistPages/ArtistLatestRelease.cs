@@ -49,7 +49,7 @@ namespace ArtistPages
             {
                 await Console.Out.WriteLineAsync("Album Data Expired Refreshing");
                 artistTrackCache[artistId] = await GenerateArtistInfo(artistId);
-                refreshTime = DateTime.UtcNow.AddSeconds(9000);
+                refreshTime = DateTime.UtcNow.AddSeconds(900);
                 await Console.Out.WriteLineAsync("Received Data at: " + DateTime.UtcNow);
                 await Console.Out.WriteLineAsync("Next Refresh at: " + refreshTime + "\n");
             }

@@ -1,15 +1,24 @@
 ﻿using System.Text;
 using System.Text.Json;
-
 namespace ArtistPages
 {
     public class TokenManager
     {
 
-        private string? SPOTIFY_CLIENT_ID = Environment.GetEnvironmentVariable("SPOTIFY_CLIENT_ID");
-        private string? SPOTIFY_CLIENT_SECRET = Environment.GetEnvironmentVariable("SPOTIFY_CLIENT_SECRET");
+        //private string? SPOTIFY_CLIENT_ID = Environment.GetEnvironmentVariable("SPOTIFY_CLIENT_ID");
+        //Dont understand how to get environment variables on azure
+        private string? SPOTIFY_CLIENT_ID = "********";
+        //private string? SPOTIFY_CLIENT_SECRET = Environment.GetEnvironmentVariable("SPOTIFY_CLIENT_SECRET");
+        private string? SPOTIFY_CLIENT_SECRET = "***********";
         private DateTime expirationTime;
         private string? current_token;
+
+
+
+
+
+
+
 
         private async Task<string> generate_new_token()
         {
