@@ -5,31 +5,13 @@
 }
 
 <div class="text-center">
-  <h1 class="display-4">Welcome to my webpage</h1>
-
-  <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-  <p>
-    <li><a href="/Error">Error page</a></li>
-    <li><a href="/Artists">Artists</a></li>
-  </p>
-
+  <h1 class="display-4">Keep Track Of The Latest Releases</h1>
+  <span class="lightbackground">
+    <p class="display-3">Never Miss Out</p>
+  </span>
 
   <p>
-  <div id="map" style="height:300px; width:600px;"></div>
 
-  <!--Still exposes API key to WebClient-->
-  <script async defer src=@Model.GoogleMapsAPIKey>
-  </script>
-  <script>
-    var map;
-    function initMAP() {
-      var SetmapOptions = {
-        zoom: 14,
-        center: new google.maps.LatLng(37.841530399999996, -122.10984239999999)
-      };
-      map = new google.maps.Map(document.getElementById('map'),
-        SetmapOptions);
-    }  
-  </script>
   </p>
+
 </div>

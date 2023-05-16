@@ -11,13 +11,58 @@ html {
 html {
   position: relative;
   min-height: 100%;
-  background-color: aliceblue;
+  background-color: #0e0f0f;
 }
 
 body {
   margin-bottom: 60px;
+  background-color: #0e0f0f;
 }
 
 footer {
-  background-color: azure;
+  background-color: #0e0f0f;
+}
+
+.display-5 {
+  color: azure;
+  font-size: larger;
+}
+
+.display-4 {
+  color: azure;
+  font-weight: bolder;
+  align-content: flex-start;
+  text-align: left;
+}
+.display-3 {
+  font-size: 5rem;
+  font-weight: 1000;
+  align-content: flex-start;
+
+  background-image: url("https://images.pexels.com/photos/6985132/pexels-photo-6985132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+  animation: colorChange 10s infinite alternate;
+}
+
+.llightbackground {
+  display: inline-block;
+  padding: 10px;
+  background-color: rgba(70, 69, 69, 0);
+  border-radius: 20%;
+  backdrop-filter: blur(50px) brightness(80%);
+}
+
+@keyframes colorChange {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
 }
