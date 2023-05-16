@@ -1,3 +1,4 @@
+
 using ArtistPages;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,8 @@ builder.Services.AddRazorPages();
 // creates a single instance that will be reused
 builder.Services.AddSingleton<TokenManager>();
 builder.Services.AddSingleton<ArtistsInfo>();
+builder.Services.AddSingleton<ArtistList>();
+builder.Services.AddSingleton<ArtistLatestRelease>();
 
 
 
@@ -38,6 +41,25 @@ var artistsInfo = app.Services.GetRequiredService<ArtistsInfo>();
 // Fetches the json string for all artists at server startup 
 await artistsInfo.GetArtistInfo();
 
+// creates the var that holds the Cached instance of artist information
+var artistList = app.Services.GetRequiredService<ArtistList>();
+
+// Fetches the json string for all artists at server startup 
+var artists = artistList.GetArtistList();
+
+// creates the var that holds the Cached instance of artist information
+var artistTracks = app.Services.GetRequiredService<ArtistLatestRelease>();
+
+
+// Fetches the json string for all artists at server startup 
+
+foreach (var artist in artists)
+{
+    Console.WriteLine("stratup tracks fethc");
+    await artistTracks.GetArtistInfo(artist);
+}
+
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -48,3 +70,5 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 await app.RunAsync();
+
+

@@ -15,9 +15,18 @@
     <p>
         @for (int i = 0; i < Model.Get_Artist_Count(); i++)
         {
-            <li>
-                @Model.Get_Artist_Name(i)
-            </li>
+
+        <div class="tile">
+            <a href=@Model.Get_Artist_URL(i) target="_blank">
+                <img src=@Model.Get_Artist_Image(i).url alt="@Model.Get_Artist_Name(i) Profile Image">
+                <div class="info display-5">
+                    <p class="name">@Model.Get_Artist_Name(i)</p>
+                    <span class="follower-count">Followers: @Model.Get_Artist_Followers(i)</span>
+                    <div class="additional-info">@await Model.Get_Album_Name(Model.Get_Artist_ID(i))</div>
+                </div>
+            </a>
+        </div>
+
         }
     </p>
 </div>

@@ -2,7 +2,7 @@
 {
     public class ArtistList
     {
-        private List<string> artists = new List<string>();
+        public List<string> artists = new List<string>();
         // creates the list of artists can be done in db or json for better organization
         private void GenerateArtistList()
         {
@@ -20,6 +20,12 @@
             Console.WriteLine("Linking Artists Together\n");
             string combinedArtists = string.Join(",", artists);
             return combinedArtists;
+        }
+
+        public List<string> GetArtistList()
+        {
+            GenerateArtistList();
+            return artists;
         }
     }
 }

@@ -5,9 +5,10 @@ namespace ArtistPages
     public class ArtistsInfo
     {
         private ArtistsData artistCacheData;
-
+        
         private DateTime refreshTime;
         ArtistList artistList = new ArtistList();
+        
         //ArtistsData artistsData = new ArtistsData();
 
 
@@ -16,8 +17,11 @@ namespace ArtistPages
         public ArtistsInfo(TokenManager tokenManager)
         {
             _tokenManager = tokenManager;
-
+            
+            
         }
+
+        
 
         // Makes a request to the Spotify API for general artists info returns json
         private static async Task<string> GetArtistInfoAsync(string artistIds, string accessToken)
@@ -25,16 +29,22 @@ namespace ArtistPages
             string url = $"https://api.spotify.com/v1/artists?ids={artistIds}";
 
             var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+            
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
 
-            var response = await client.GetAsync(url);
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new HttpRequestException($"Request failed with status code {response.StatusCode}");
-            }
+                var response = await client.GetAsync(url);
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new HttpRequestException($"Request failed with status code {response.StatusCode}");
+                }
 
-            var responseContent = await response.Content.ReadAsStringAsync();
-            return responseContent;
+                var responseContent = await response.Content.ReadAsStringAsync();
+                
+                
+               
+
+                return responseContent;
+            
         }
         // called to pull artist info either gets new or pulls from stored objects
         private async Task<ArtistsData> GenerateArtistInfo()
@@ -60,11 +70,13 @@ namespace ArtistPages
                 //artistCacheData = null;
                 artistCacheData = await GenerateArtistInfo();
                 // Calls API to refresh Artist Data every 15 mins reduces API calls
-                refreshTime = DateTime.UtcNow.AddSeconds(30);
+                refreshTime = DateTime.UtcNow.AddSeconds(9000);
                 await Console.Out.WriteLineAsync("Received Data at: " + DateTime.UtcNow);
                 await Console.Out.WriteLineAsync("Next Refresh at: " + refreshTime + "\n");
-                return artistCacheData;
+                
 
+                 return artistCacheData;
+                
             }
             else
             {
