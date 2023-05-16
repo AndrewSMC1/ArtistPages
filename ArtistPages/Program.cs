@@ -1,7 +1,13 @@
+using ArtistPages;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+// creates a single instance that will be reused
+builder.Services.AddSingleton<TokenManager>();
+builder.Services.AddSingleton<ArtistsInfo>();
+
 
 
 var app = builder.Build();
@@ -14,7 +20,23 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-DotNetEnv.Env.Load("../.env");
+// loads the private keys into environment from .env file located in same folder as program.cs
+DotNetEnv.Env.Load(".env");
+
+//creates a var that holds the single instance dependency TokenManager
+var tokenManager = app.Services.GetRequiredService<TokenManager>();
+
+// Generate the token at startup and stores it in tokenManager for use in other methods
+// Note probably not the most secure
+await tokenManager.get_token();
+
+
+
+// creates the var that holds the Cached instance of artist information
+var artistsInfo = app.Services.GetRequiredService<ArtistsInfo>();
+
+// Fetches the json string for all artists at server startup 
+await artistsInfo.GetArtistInfo();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -25,4 +47,4 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.Run();
+await app.RunAsync();

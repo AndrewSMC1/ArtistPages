@@ -1,0 +1,23 @@
+﻿@page
+@model ArtistsModel
+@{
+    ViewData["Title"] = "Artists page";
+    
+
+    // Retrieve the artist names and store them in a list
+
+    await Model.Pull_ArtistInfo();
+
+
+}
+
+<div class="text-center">
+    <p>
+        @for (int i = 0; i < Model.Get_Artist_Count();i++)
+        {
+            <li>
+                @Model.Get_Artist_Name(i)
+            </li>
+        }
+    </p>
+</div>
