@@ -171,3 +171,13 @@ footer {
 .artistsbtn a {
   color: rgba(240, 248, 255, 0.808);
 }
+
+.new-notification {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 5px;
+}

@@ -17,9 +17,20 @@
             //creates a new div that is placed in a flexbox that changes with the information of the artist at the index i
             {
                 string artistid = Model.Get_Artist_ID(i);
+                string albumreleasedate = await Model.Get_Album_Date(artistid);
+                DateTime albumrelease = DateTime.Parse(albumreleasedate);
             <div class="tile">
                 <a href=@Model.Get_Artist_URL(i) target="_blank">
                     <img class="artist-image" src=@Model.Get_Artist_Image(i).url alt="@Model.Get_Artist_Name(i) Profile Image">
+                        @if (albumrelease >= DateTime.UtcNow.AddMonths(-6))
+                        {
+                        <div class="info display-5 new-notification">
+                            <p class="banner-text" font-weight: bold;">New</p>
+                        </div>
+                        }
+
+
+
                     <div class="info display-5">
                         <p class="name">@Model.Get_Artist_Name(i)</p>
                         <p class="follower-count">Followers: @Model.Get_Artist_Followers(i)</p>
@@ -28,7 +39,7 @@
                 </a>
                 <a href=@await Model.Get_Album_URL(artistid) target="_blank">
                     <div class="additional-info info display-5">
-                        <p> <span class="latestrelease">Latest Release<span/>
+                        <p> <span class="latestrelease">Latest Release<span />
                                 <span>@await Model.Get_Album_Date(artistid)</span>
                         </p>
                         <p class="album">
