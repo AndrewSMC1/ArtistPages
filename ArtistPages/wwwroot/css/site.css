@@ -62,14 +62,14 @@ footer {
 }
 
 .tile {
-  width: 200px; /* Adjust the width as desired */
-  height: 200px; /* Set the same value as width to create a square */
+  width: 200px; 
+  height: 200px;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 4px solid #ccc; /* Add a border if desired */
-  margin: 10px; /* Adjust the margin as needed */
+  border: 4px solid #ccc; 
+  margin: 10px; 
   background-color: rgb(35, 47, 58);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s;
@@ -78,7 +78,7 @@ footer {
 }
 
 .tile a {
-  text-decoration: none; /* Add this line */
+  text-decoration: none; 
 }
 
 .tile:hover {
@@ -93,9 +93,9 @@ footer {
 }
 
 .tile .artist-image {
-  width: 100px; /* Adjust the size of the image as desired */
-  height: 100px; /* Adjust the size of the image as desired */
-  border-radius: 50%; /* Makes the image circular */
+  width: 100px; 
+  height: 100px; 
+  border-radius: 50%; 
 }
 
 .info {
@@ -131,9 +131,9 @@ footer {
 }
 
 .additional-info .album-image {
-  width: 50px; /* Adjust the size of the image as desired */
-  height: 50px; /* Adjust the size of the image as desired */
-  border-radius: 10%; /* Makes the image circular */
+  width: 50px; 
+  height: 50px; 
+  border-radius: 10%; 
 }
 
 .tile:hover .additional-info {
