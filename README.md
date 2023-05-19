@@ -1,6 +1,7 @@
 # ArtistPages
 
 - Artist Pages - A website that gives the user a quick display of artists most recent releases
+- Published Page - https://artistpages.azurewebsites.net
 
 # About
 
@@ -37,3 +38,5 @@
 - https://www.pexels.com/photo/colorful-saturated-abstract-background-of-paints-3826328/
 
 - https://images.pexels.com/photos/6985132/pexels-photo-6985132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+
+- https://www.techiedelight.com/convert-string-to-datetime-csharp/
