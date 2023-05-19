@@ -1,6 +1,7 @@
 # ArtistPages
 
 - Artist Pages - A website that gives the user a quick display of artists most recent releases
+- Published Page - https://artistpages.azurewebsites.net
 
 # About
 
