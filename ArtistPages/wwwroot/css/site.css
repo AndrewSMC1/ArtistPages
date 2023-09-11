@@ -11,6 +11,7 @@ html {
   background-color: #0e0f0f;
   min-height: 100%;
   position: relative;
+  margin: 0;
 }
 
 body {
@@ -19,7 +20,12 @@ body {
 }
 
 footer {
-  background-color: #0e0f0f;
+  background: rgb(162, 28, 87);
+  background: linear-gradient(
+    90deg,
+    rgba(162, 28, 87, 1) 0%,
+    rgba(59, 99, 145, 1) 100%
+  );
 }
 
 /* Heading styles */
@@ -205,6 +211,7 @@ footer {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  margin: 0;
 }
 
 .display-4 {
@@ -222,6 +229,9 @@ footer {
   height: 500px;
   width: 500px;
   border-radius: 50px;
+}
+
+.raisedbox-gray {
   background: rgb(35, 47, 58);
   box-shadow: 20px 20px 40px #262626, -20px -20px 40px #5e5e5e;
 }
@@ -231,25 +241,31 @@ footer {
   align-items: center;
   padding: 10px;
   text-align: center;
-  color: white;
   font-size: xx-large;
   font-weight: 800;
 }
 
+.text-white {
+  color: white;
+}
+
 /* These are the KEY styles - you can add them directly to any object you want in your project */
-.fancy-border-radius {
+.colored-shape-one {
   position: fixed;
   border-radius: 45% 55% 12% 88% / 100% 17% 83% 0%;
 
   /* These are ADDITIONAL styles - add them if you want an object exactly like in the demo above */
   width: 400px;
   height: 400px;
+}
+
+.colored-shape-purple-pink {
   background: #ad5389;
   background: -webkit-linear-gradient(to right, #3c1053, #ad5389);
   background: linear-gradient(to right, #3c1053, #ad5389);
 }
 
-.background-div {
+.div-pos-one {
   position: absolute;
   top: 0;
   left: 0;
@@ -257,12 +273,30 @@ footer {
   height: 100%;
   scale: 0.4;
   translate: 20% 20%;
-  transform: rotate(20deg);
   background-color: #f0f0f0; /* Background color of the background div */
   z-index: 1; /* Place the background-div behind the foreground-div */
 }
 
-.foreground-div {
+.div-pos-two {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  scale: 0.4;
+  translate: 20% 00%;
+  background-color: #f0f0f0; /* Background color of the background div */
+  z-index: 1; /* Place the background-div behind the foreground-div */
+}
+.rotate-20 {
+  transform: rotate(20deg);
+}
+
+.rotate-neg20 {
+  transform: rotate(130deg);
+}
+
+.div-pos-zero {
   position: relative;
   z-index: 2; /* Place the foreground-div in front of the background-div */
   /* Add other styles for the foreground-div */
